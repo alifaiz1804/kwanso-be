@@ -1,0 +1,383 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "REST API for Swagger Documentation",
+    "version": "1.0.0"
+  },
+  "schemes": ["http"],
+  "servers": [{ "url": "http://localhost:3000/" }],
+  "paths": {
+    "/api/auth/login": {
+      "post": {
+        "tags": ["Auth Enpoints"],
+        "summary": "Login to server",
+        "description": "Admin or Client can login to the server.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponseSchema"
+                }
+              }
+            }
+          },
+          "404": { "description": "Not found" },
+          "500": { "description": "Internal server error" }
+        }
+      }
+    },
+    "/api/auth/signup": {
+      "post": {
+        "tags": ["Auth Enpoints"],
+        "summary": "Signup to server",
+        "description": "Only users invited by admins can signup",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignUpSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponseSchema"
+                }
+              }
+            }
+          },
+          "404": { "description": "Not found" },
+          "500": { "description": "Internal server error" }
+        }
+      }
+    },
+    "/api/users/invite": {
+      "post": {
+        "tags": ["Users Enpoints"],
+        "summary": "Invite users to platform",
+        "description": "Only Admin can invite users",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InviteUserResponseSchema"
+                }
+              }
+            }
+          },
+          "404": { "description": "Not found" },
+          "500": { "description": "Internal server error" }
+        }
+      }
+    },
+    "/api/tasks///": {
+      "post": {
+        "tags": ["Tasks Enpoints"],
+        "summary": "Create tasks",
+        "description": "User can create task of its own",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskSchema"
+                }
+              }
+            }
+          },
+          "404": { "description": "Not found" },
+          "500": { "description": "Internal server error" }
+        }
+      }
+    },
+    "/api/tasks/:id": {
+      "put": {
+        "tags": ["Tasks Enpoints"],
+        "params": "id",
+        "summary": "Update tasks",
+        "description": "User can Update there tasks",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskSchema"
+                }
+              }
+            }
+          },
+          "404": { "description": "Not found" },
+          "500": { "description": "Internal server error" }
+        }
+      }
+    },
+    "/api/tasks": {
+      "get": {
+        "tags": ["Tasks Enpoints"],
+        "summary": "Get All Tasks",
+        "description": "Get All tasks",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InviteUserResponseSchema"
+                }
+              }
+            }
+          },
+          "404": { "description": "Not found" },
+          "500": { "description": "Internal server error" }
+        }
+      }
+    },
+    "/api/tasks/:id//": {
+      "get": {
+        "tags": ["Tasks Enpoints"],
+        "params": "",
+        "summary": "Get One Task",
+        "description": "Get one tasks",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InviteUserResponseSchema"
+                }
+              }
+            }
+          },
+          "404": { "description": "Not found" },
+          "500": { "description": "Internal server error" }
+        }
+      }
+    },
+    "/api/tasks/:id/": {
+      "delete": {
+        "tags": ["Tasks Enpoints"],
+        "params": "",
+        "summary": "Delete One Task",
+        "description": "User can delete there tasks",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InviteUserResponseSchema"
+                }
+              }
+            }
+          },
+          "404": { "description": "Not found" },
+          "500": { "description": "Internal server error" }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserSchemaBody": {
+        "properties": {
+          "responseText": {
+            "type": "string",
+            "example": "This is some example string! This is an endpoint"
+          }
+        }
+      },
+      "AuthSchema": {
+        "required": ["email", "password"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "demo@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "**********"
+          }
+        }
+      },
+      "AuthResponseSchema": {
+        "required": [
+          "_id",
+          "first_name",
+          "first_name",
+          "email",
+          "password",
+          "token"
+        ],
+        "properties": {
+          "_id": {
+            "type": "string",
+            "example": "1s3d2e32ewe23e3"
+          },
+          "first_name": {
+            "type": "string",
+            "example": "**********"
+          },
+          "last_name": {
+            "type": "string",
+            "example": "**********"
+          },
+          "email": {
+            "type": "string",
+            "example": "**********"
+          },
+          "token": {
+            "type": "string",
+            "example": "JwtToken"
+          }
+        }
+      },
+      "SignUpSchema": {
+        "required": ["email", "password", "first_name", "last_name", "token"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "demo@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "**********"
+          },
+          "first_name": {
+            "type": "string",
+            "example": "John"
+          },
+          "last_name": {
+            "type": "string",
+            "example": "Doe"
+          },
+          "token": {
+            "type": "string",
+            "example": "JwtToken provided by the admin"
+          }
+        }
+      },
+      "UserSchema": {
+        "required": ["email"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "john@gmail.com"
+          }
+        }
+      },
+      "InviteUserResponseSchema": {
+        "required": ["token"],
+        "properties": {
+          "token": {
+            "type": "string",
+            "example": "12ewe3rw432qe232e3"
+          }
+        }
+      },
+      "TaskSchema": {
+        "required": ["name", "description", "status", "user_id"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Name of task"
+          },
+          "description": {
+            "type": "string",
+            "example": "Description of task"
+          },
+          "status": {
+            "type": "string",
+            "example": "Status of task. Can only be 'completed' or 'pending'"
+          },
+          "user_id": {
+            "type": "string",
+            "example": "232d232e323e //Id of user assosiate with this task."
+          }
+        }
+      }
+    }
+  }
+}
